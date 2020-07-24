@@ -1,0 +1,19 @@
+<!-- {{ include.image_path }}<br> -->
+{% assign image_path_parts = include.image_path  | split: "/" %}
+{% assign image_filename = image_path_parts | last %}
+{% assign image_filename_parts = image_filename | split: "-" %}
+<!-- {{ image_filename_parts }}
+{{ image_filename_parts.size }} -->
+{% assign req_num_parts = image_filename_parts.size | minus: 1 %}
+{% assign image_basename = image_filename_parts | slice: 0, req_num_parts | join: "-" %}
+{{ image_basename }}<br>
+
+{% assign req_num_image_dir_parts = image_path_parts.size | minus: 1 %}
+{% assign dir_path = image_path_parts | slice: 0, req_num_image_dir_parts | join: "/" %}
+{% assign image_extenstion = include.image_path | split: "." | last %}
+{{ image_extenstion }}<br>
+
+{% assign pano_sizes = "1600w,1440w,768w" | split: "," %}
+{% assign standard_sizes = "600w,480w" | split: "," %}
+
+{{ standard_sizes.size }}

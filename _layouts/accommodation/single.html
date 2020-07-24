@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+{% if page.pano_page_banner %}
+  <section id="panorama">
+    <picture>
+      {% include _shared/srcset-source.html image_path=page.standard_page_banner media="(max-width: 599px)" element="source" %}
+      <img src="{{ page.pano_page_banner }}">
+    </picture>
+  </section>
+{% endif %}
+<section id="main-content" class="panel {% if page.main_content_strip_classes %}{{ page.main_content_strip_classes }}{% endif %}">
+  <div class="container page-gutters d-flex direction-column align-center">
+    {% if page.title %}<h1 class="main-header">{{ page.title }}</h1>{% endif %}
+    <div class="main-block body-text">
+      {% include accommodation-amenities.html accommodation_item=page %}
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+{% if page.gallery_path %}
+  <section id="gallery" class="padding-bottom-xl">
+    <div class="image-gallery" data-thumbnail-dimensions="4:3">
+      {{ $full_path := printf "%s%s" "static" page.gallery_path }}
+      {{ $.Scratch.Set "scratched_path" $full_path }}
+      {{ $scratched_path := $.Scratch.Get "scratched_path"}}
+      {{ $files := readDir $scratched_path }}
+      <ul class="gallery-files" data-gallery-path="{{ page.gallery_path }}" style="display: none">
+        {{ range $files}}
+          <li>{{ .Name }}</li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+{% endif %}
+
+

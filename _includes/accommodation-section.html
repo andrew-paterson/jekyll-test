@@ -1,0 +1,9 @@
+<div class="accommodation-category padding-x-md {{ include.class }}">
+  {% if include.header %}<h2 class="main-header">{{ include.header }}</h2>{% endif %}
+  <div class="d-flex accommodation-category">
+    {% assign accommodation_pages = site.accommodation %}
+    {% for accommodation_item in site.accommodation %}
+      {% include accommodation-card.html accommodation_item=accommodation_item %}
+    {% endfor %}
+  </div>
+</div>

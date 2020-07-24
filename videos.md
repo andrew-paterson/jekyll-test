@@ -1,7 +1,7 @@
 ---
 layout: videos/index
 title: Videos
-permalink: /vidoes/
+permalink: /videos
 ---
 
 ## Some videos here

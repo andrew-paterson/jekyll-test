@@ -1,0 +1,12 @@
+---
+layout: default
+---
+{% if page.banner %}
+  <section id="panorama">
+    <img src="{{ page.banner }}" alt="PageBanner" />
+  </section>
+{% endif %}
+<section id="accommodation" class="panel">
+  <h1 class="main-header">Accommodation</h1>
+  {% include all-accommodation.html %}
+</section>

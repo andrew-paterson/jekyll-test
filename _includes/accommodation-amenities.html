@@ -1,0 +1,22 @@
+<div class="accommodation-amenties">
+  {% if accommodation_item.braai %}
+    <div class="amenity braai">
+      <div class="amenity-icon">{% include svg/braai.html %}</div>{{ accommodation_item.braai }}
+    </div>
+  {% endif %}
+  {% if accommodation_item.views %}
+    <div class="amenity views">
+      <div class="amenity-icon">{% include svg/tree.html %}</div>{{ accommodation_item.views }}
+    </div>
+  {% endif %}
+  {% if accommodation_item.tv_wifi %}
+    <div class="amenity wifi-tv">
+      <div class="amenity-icon">{% include svg/tv-wifi.html %}</div>{{ accommodation_item.tv_wifi }}
+    </div>
+  {% endif %}
+  {% if accommodation_item.rates %}
+    <div class="amenity rates">
+      <div class="amenity-icon">{% include svg/money.html %}</div>{{ accommodation_item.rates }}
+    </div>
+  {% endif %}
+</div>

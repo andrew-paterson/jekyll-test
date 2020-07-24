@@ -1,0 +1,12 @@
+<a href="{{ accommodation_item.permalink }}" class="accommodation-item-card">
+  <div>
+    <div >
+      <img src="{{ accommodation_item.cover_image }}" class="accommodation-card-cover-image object-fit-cover" alt="{{ accommodation_item.cover_image }}" data-dimensions='4:3' data-object-fit="cover">
+    </div>
+    <div class="padding-lg accommodation-card-text">
+      <h3 class="accommodation-card-header">{{ accommodation_item.title }}</h3>
+      {% include accommodation-amenities.html accommodation_item=accommodation_item %}
+      <div class="accommodation-card-summary">{{ accommodation_item.summary }}</div>
+    </div>
+  </div>
+</a>
