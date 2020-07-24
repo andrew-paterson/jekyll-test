@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    {% include head-element-markup.html %}
+    {% include dynamic-css-js-files.html type="css" %}
+  </head>
+  <body class="{{ page.pageclass }} header-height-tall">
+    <div id="wrapper">
+      <div class='panels'>
+        {% include header.html  %}
+        {{ content }}
+      </div>
+        {% include footer.html %}
+    </div>
+    {% include dynamic-css-js-files.html type="js" %}
+  </body>
+</html>

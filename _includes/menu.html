@@ -1,0 +1,39 @@
+{% if include.menu[0] %}
+  <ul class="custom-menu menu level-1">
+    {% for level_1_item in include.menu %}
+      <li class="{{ level_1_item.class }}{% if level_1_item.url == page.url %} active{% endif %}{% if level_1_item.children[0] %} parent{% endif %}">
+        {% if level_1_item.url %}
+          <a href="{{ level_1_item.url }}">{{ level_1_item.name }}</a>
+        {% else %}  
+          <span>{{ level_1_item.name }}</span>
+        {% endif %}
+        {% if level_1_item.children[0] %}
+          <ul class="menu level-2">
+            {% for level_2_item in level_1_item.children %}
+              <li class="{{ level_2_item.class }}{% if level_2_item.url == page.url %} active{% endif %}{% if level_2_item.children[0] %} parent{% endif %}">
+                {% if level_2_item.url %}
+                  <a href="{{ level_2_item.url }}">{{ level_2_item.name }}</a>
+                {% else %}  
+                  <span>{{ level_2_item.name }}</span>
+                {% endif %}
+                {% if level_2_item.children[0] %}
+                  <ul class="menu level-3">
+                    {% for level_3_item in level_2_item.children %}
+                      <li class="{{ level_3_item.class }}{% if level_3_item.url == page.url %} active{% endif %}">
+                        {% if level_3_item.url %}
+                          <a href="{{ level_3_item.url }}">{{ level_3_item.name }}</a>
+                        {% else %}  
+                          <span>{{ level_3_item.name }}</span>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

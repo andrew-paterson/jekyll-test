@@ -1,0 +1,44 @@
+main:
+  - name: Red
+    url: /about
+    children:
+      - name: Thing 1
+        url: /thing1.html
+        class: thing-1
+      - name: Thing 2
+        url: /thing2.html
+        children:
+          - name: Subthing 1
+            url: /subthing1.html
+          - name: Subthing 2
+            url: /subthing2.html
+      - name: Thing 3
+        url: /thing3.html
+  - name: Orange
+    url: /top1.html
+    children:
+      - name: Piece 1
+        url: /piece1.html
+      - name: Piece 2
+        url: /piece2.html
+      - name: Piece 3
+        url: /piece3.html
+        children:
+          - name: Subpiece 1
+            url: /subpiece1.html
+          - name: Subpiece2
+            url: /subpiece2.html
+  - name: Yellow
+    url: /top1.html
+    children:
+      - name: Widget 1
+        url: /widget1.html
+        children:
+          - name: Subwidget 1
+            url: /subwidget1.html
+          - name: Subwidget 2
+            url: /subwidget2.html
+      - name: Widget 2
+        url: /widget2.html
+      - name: Widget 3
+        url: /widget3.html
