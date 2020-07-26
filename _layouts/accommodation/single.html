@@ -23,14 +23,12 @@ layout: default
 {% if page.gallery_path %}
   <section id="gallery" class="padding-bottom-xl">
     <div class="image-gallery" data-thumbnail-dimensions="4:3">
-      {{ $full_path := printf "%s%s" "static" page.gallery_path }}
-      {{ $.Scratch.Set "scratched_path" $full_path }}
-      {{ $scratched_path := $.Scratch.Get "scratched_path"}}
-      {{ $files := readDir $scratched_path }}
       <ul class="gallery-files" data-gallery-path="{{ page.gallery_path }}" style="display: none">
-        {{ range $files}}
-          <li>{{ .Name }}</li>
-        {{ end }}
+        {% for file in site.static_files %}
+          {% if file.extname == ".jpg" and file.path contains page.gallery_path %} 
+            <li>{{ file.name }}</li>
+          {% endif %}
+        {% endfor %}
       </ul>
     </div>
   </section>
