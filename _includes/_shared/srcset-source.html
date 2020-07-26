@@ -1,19 +1,31 @@
-<!-- {{ include.image_path }}<br> -->
-{% assign image_path_parts = include.image_path  | split: "/" %}
-{% assign image_filename = image_path_parts | last %}
-{% assign image_filename_parts = image_filename | split: "-" %}
-<!-- {{ image_filename_parts }}
-{{ image_filename_parts.size }} -->
-{% assign req_num_parts = image_filename_parts.size | minus: 1 %}
-{% assign image_basename = image_filename_parts | slice: 0, req_num_parts | join: "-" %}
-{{ image_basename }}<br>
+{% assign srcset = '' %}
+{% assign common_image_path = include.image_path  | split: "-" | pop | join: "-" %}
 
-{% assign req_num_image_dir_parts = image_path_parts.size | minus: 1 %}
-{% assign dir_path = image_path_parts | slice: 0, req_num_image_dir_parts | join: "/" %}
-{% assign image_extenstion = include.image_path | split: "." | last %}
-{{ image_extenstion }}<br>
+{% for file in site.static_files %}
+  {% if file.extname == ".jpg" and file.path contains common_image_path %} 
+    {% assign file_size = file.path | split: "." | pop | join: "." | split: "-" | last %} 
+    {% assign srcset = srcset | append: ", " | append: file.path | append: " " | append: file_size %}
+  {% endif %}
+{% endfor %}
 
-{% assign pano_sizes = "1600w,1440w,768w" | split: "," %}
-{% assign standard_sizes = "600w,480w" | split: "," %}
-
-{{ standard_sizes.size }}
+{% if include.element == "source" %}
+  <source 
+    media="{{ include.media }}" 
+    srcset="{{ srcset }}"
+    {% if include.sizes %}
+      sizes="{{ sizes }}"
+    {% endif %}>
+{% else %}
+	<img srcset="{{ srcset }}"
+	src="{{ include.image_path }}"
+	{% if include.sizes %}
+		sizes="{{ include.sizes }}"
+	{% endif %}
+	{% if include.alt %}
+		alt="{{ include.alt }}"
+	{% endif %}
+	{% if include.title %}
+		title="{{ include.title }}"
+	{% endif %}
+	/>
+{% endif %}

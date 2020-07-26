@@ -5,6 +5,7 @@ layout: default
 {% if page.pano_page_banner %}
   <section id="panorama">
     <picture>
+      {% include _shared/srcset-source.html image_path=page.pano_page_banner media="(min-width: 600px)" element="source" %}
       {% include _shared/srcset-source.html image_path=page.standard_page_banner media="(max-width: 599px)" element="source" %}
       <img src="{{ page.pano_page_banner }}">
     </picture>
