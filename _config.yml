@@ -61,3 +61,5 @@ collections:
     output: true #Pnote - only creates a single page for each item if this is true.
   accommodation:
     output: true
+  media:
+    output: false

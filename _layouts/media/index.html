@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<section id="main-content" class="blog-layout">
+  <div class="content-max-width page-gutters d-flex direction-column align-center padding-y-xl">
+    <h1 class="main-header">{{ page.title }}</h1>
+    <div class="main-block body-text">
+      {% assign items = site.media | sort: "date" | reverse %}
+      {% for media_item in items %}
+        <div class="content-list-item">
+          <h2 class="item-title"><a href="{{ media_item.link }}" target="_blank">{{ media_item.title }}</a></h2>
+          {% if media_item.cover_image %}
+            <a href="{{ media_item.link }}" class="thumbnail-link" target="_blank"><img class="item-thumbnail" src="{{ media_item.cover_image }}" /></a>
+          {% endif %}
+          <div class="item-summary">
+            
+          </div>
+          {% if media_item.link %}<a class="btn" href="{{ media_item.link }}" target="_blank">View article</a>{% endif %}
+        </div>
+      {% endfor %}
+      <div class="pagination-links">
+        
+      </div>
+    </div>
+  </div>
+</section>

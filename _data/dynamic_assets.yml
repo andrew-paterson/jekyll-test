@@ -1,0 +1,11 @@
+default:
+  css: 
+    - /assets/css/style.css
+  js: 
+    - /assets/js/scripts.js
+accommodation_single:
+  js:
+    - /assets/js/jquery-3.2.1.min.js
+    - /assets/js/jquery.fancybox.min.js
+    - /assets/js/scripts.js
+    - /assets/js/gallery.js
